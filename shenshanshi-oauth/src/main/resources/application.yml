@@ -1,0 +1,16 @@
+server:
+  port: 2522
+
+
+
+spring:
+  application:
+    name: shenshanshi-oauth
+  cloud:
+    nacos:
+      server-addr: niconiconi:8848
+      discovery:
+        username: nacos
+        password: 770520
+        namespace: public
+
