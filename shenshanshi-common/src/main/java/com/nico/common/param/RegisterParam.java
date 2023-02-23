@@ -1,16 +1,16 @@
 package com.nico.common.param;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
+
 import javax.validation.constraints.NotBlank;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginParam {
+public class RegisterParam {
 
     @NotBlank(message = "用户名不能为空")
     @Length(min = 2, max = 10, message = "用户名长度为2-10个字符")

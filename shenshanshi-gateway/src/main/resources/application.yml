@@ -24,4 +24,4 @@ spring:
         - id: shenshanshi-oauth  #认证服务
           uri: lb://shenshanshi-oauth
           predicates:
-            - Path=/login,/logout
+            - Path=/login,/logou,/register
