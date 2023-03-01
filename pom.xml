@@ -50,6 +50,9 @@
         <jjwt.version>0.9.1</jjwt.version>
         <commons.io.version>2.11.0</commons.io.version>
         <pagehelper.boot.version>1.4.5</pagehelper.boot.version>
+        <mybatis.version>3.5.11</mybatis.version>
+        <jasypt.version>3.0.4</jasypt.version>
+        <commons.codec.version>1.10</commons.codec.version>
 
     </properties>
 
@@ -126,6 +129,52 @@
             </dependency>
 
 
+            <!--添加 代码生成器 依赖-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+            <!-- freemarker 模板引擎 -->
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>2.3.23</version>
+            </dependency>
+
+
+            <!-- jasypt加密工具包 -->
+            <dependency>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-spring-boot-starter</artifactId>
+                <version>${jasypt.version}</version>
+            </dependency>
+
+
+            <!-- commons-codec加密 -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons.codec.version}</version>
+            </dependency>
+
+
+
+            <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+<!--            <dependency>-->
+<!--                <groupId>org.mybatis</groupId>-->
+<!--                <artifactId>mybatis</artifactId>-->
+<!--                <version>3.5.6</version>-->
+<!--            </dependency>-->
+<!--            &lt;!&ndash; https://mvnrepository.com/artifact/org.mybatis/mybatis &ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>org.mybatis</groupId>-->
+<!--                <artifactId>mybatis</artifactId>-->
+<!--                <version>${mybatis.version}</version>-->
+<!--            </dependency>-->
+
+
             <!-- druid -->
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -157,13 +206,13 @@
 
 
 
-            <!-- mirai-core-jvm -->
-            <dependency>
-                <groupId>net.mamoe</groupId>
-                <artifactId>mirai-core-jvm</artifactId>
-                <version>${mirai.version}</version>
-                <type>pom</type>
-            </dependency>
+<!--            &lt;!&ndash; mirai-core-jvm &ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>net.mamoe</groupId>-->
+<!--                <artifactId>mirai-core-jvm</artifactId>-->
+<!--                <version>${mirai.version}</version>-->
+<!--                <type>pom</type>-->
+<!--            </dependency>-->
 
 
 
@@ -226,7 +275,7 @@
             <!-- common-core -->
             <dependency>
                 <groupId>com.nico</groupId>
-                <artifactId>shenshanshi-common-core</artifactId>
+                <artifactId>shenshanshi-common</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 
@@ -239,6 +288,13 @@
                 <groupId>com.nico</groupId>
                 <artifactId>shenshanshi-common</artifactId>
                 <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
             </dependency>
 
         </dependencies>

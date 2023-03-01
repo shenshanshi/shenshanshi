@@ -11,6 +11,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 
 public class JwtUtils {
 
@@ -23,7 +24,7 @@ public class JwtUtils {
     /**
      * 令牌秘钥
      */
-    private static final String SECRET = "zhongguodianxin";
+    private static final String SECRET = "niconiconi!";
 
 
     /**
@@ -31,7 +32,7 @@ public class JwtUtils {
      * @param accountId
      * @return
      */
-    public static String createToken (Long accountId){
+    public static String createToken (Long accountId, List<String> roles, List<String> permissions){
 
         String jwtToken = Jwts.builder()
 
@@ -44,6 +45,8 @@ public class JwtUtils {
 
                 //设置Payload
                 .claim("accountId", accountId)
+                .claim("roles", roles)
+                .claim("permissions", permissions)
 
                 //设置过期时间
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRE))
@@ -78,7 +81,26 @@ public class JwtUtils {
      * 根据token获取用户名
      * @return
      */
-    public static Long getUserId() {
+    public static long getAccountId() {
+
+        String jwtToken = getToken();
+
+        Jws<Claims> claimsJws;
+        try {
+            claimsJws = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(jwtToken);
+        }catch (Exception e){
+//            e.printStackTrace();
+            return 0;
+        }
+        Claims claims = claimsJws.getBody();
+        return Long.valueOf(claims.get("accountId").toString());
+    }
+
+    /**
+     * 根据token获取角色
+     * @return
+     */
+    public static List<String> getRoles() {
 
         String jwtToken = getToken();
 
@@ -90,7 +112,30 @@ public class JwtUtils {
             return null;
         }
         Claims claims = claimsJws.getBody();
-        return Long.valueOf(claims.get("accountId").toString());
+
+        List<String> roles = (List<String>) claims.get("roles");
+
+        return roles;
+    }
+
+    /**
+     * 根据token获取权限
+     * @return
+     */
+    public static  List<String>  getPermissions() {
+
+        String jwtToken = getToken();
+
+        Jws<Claims> claimsJws;
+        try {
+            claimsJws = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(jwtToken);
+        }catch (Exception e){
+//            e.printStackTrace();
+            return null;
+        }
+        Claims claims = claimsJws.getBody();
+        List<String> permissions = (List<String>) claims.get("permissions");
+        return permissions;
     }
 
 

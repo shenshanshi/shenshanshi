@@ -57,15 +57,6 @@ public class GlobalExceptionHandler
     }
 
 
-    /**
-     * 数据校验异常
-     */
-    @ExceptionHandler(Exception.class)
-    public AjaxResult exception(Exception e)
-    {
-
-        return AjaxResult.error("------------------");
-    }
 
 
 

@@ -1,50 +1,86 @@
 package com.nico.account.controller;
 
-import com.nico.common.domain.Account;
+
+import com.nico.account.domain.Account;
+import com.nico.account.service.AccountService;
 import com.nico.common.web.domain.AjaxResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Resource;
+import java.util.Map;
 
+/**
+ * @description account
+ * @author nico
+ * @date 2023-02-26
+ */
 @RestController
-@RequestMapping("/account")
+@RequestMapping(value = "/account")
 public class AccountController {
 
-    @GetMapping("/account")
-    public AjaxResult getAccount(){
+    @Resource
+    private AccountService accountService;
 
-        Account account = new Account();
-        account.setAccountId(123456L);
-        return AjaxResult.success(account);
+    /**
+     * 新增
+     * @author nico
+     * @date 2023/02/26
+     **/
+    @RequestMapping("/insert")
+    public AjaxResult insert(@RequestBody Account account){
+
+        if (account == null)
+            return AjaxResult.error();
+
+        int insert = accountService.insert(account);
+        if (insert > 0)
+            return AjaxResult.success();
+        return AjaxResult.error();
+
     }
 
-
-    @GetMapping("/account/{accountId}")
-    public AjaxResult getAccount(@PathVariable Long accountId){
-        Account account = new Account();
-        account.setAccountId(123456L);
-        return AjaxResult.success(account);
+    /**
+     * 刪除
+     * @author nico
+     * @date 2023/02/26
+     **/
+    @RequestMapping("/delete")
+    public AjaxResult delete(Long id){
+        int delete = accountService.delete(id);
+        return AjaxResult.success(delete);
     }
 
+    /**
+     * 更新
+     * @author nico
+     * @date 2023/02/26
+     **/
+    @RequestMapping("/update")
+    public AjaxResult update(Account account){
+        accountService.update(account);
 
-    @GetMapping("/accounts")
-    public AjaxResult getAccounts(){
-
-        Account account = new Account();
-        account.setAccountId(123456L);
-        List list = new ArrayList();
-        list.add(account);
-        return AjaxResult.success(list);
+        return AjaxResult.success();
     }
 
-
-    @DeleteMapping("/account")
-    public AjaxResult deleteAccount(){
-        return AjaxResult.success("删除成功");
+    /**
+     * 查询 根据主键 id 查询
+     * @author nico
+     * @date 2023/02/26
+     **/
+    @RequestMapping("/account/{accountId}")
+    public Account load(@PathVariable Long accountId){
+        return accountService.get(accountId);
     }
 
-
-
+    /**
+     * 查询 分页查询
+     * @author nico
+     * @date 2023/02/26
+     **/
+    @RequestMapping("/pageList")
+    public Map<String, Object> pageList(@RequestParam(required = false, defaultValue = "0") int offset,
+                                        @RequestParam(required = false, defaultValue = "10") int pagesize) {
+        return accountService.pageList(offset, pagesize);
+    }
 
 }
