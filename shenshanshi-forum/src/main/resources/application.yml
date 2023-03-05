@@ -1,9 +1,9 @@
 server:
-  port: 2521
+  port: 2523
 
 spring:
   application:
-    name: shenshanshi-account
+    name: shenshanshi-forum
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver

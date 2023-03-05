@@ -13,22 +13,22 @@ public interface AccountService {
     /**
      * 新增
      */
-    public int insert(Account account);
+    public int insertAccount(Account account);
 
     /**
      * 删除
      */
-    public int delete(Long id);
+    public int deleteAccount(long accountId);
 
     /**
      * 更新
      */
-    public int update(Account account);
+    public int updatAccount(Account account);
 
     /**
      * 根据主键 id 查询
      */
-    public Account get(Long id);
+    public Account selectAccountByAccountId(long accountId);
 
     /**
      * 分页查询

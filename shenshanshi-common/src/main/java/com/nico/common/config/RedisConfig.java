@@ -1,4 +1,5 @@
-package com.nico.oauth.config;
+package com.nico.common.config;
+
 
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;

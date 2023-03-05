@@ -1,16 +1,16 @@
 package com.nico.oauth.controller;
 
 import com.nico.common.constant.RedisConstants;
-import com.nico.common.param.LoginParam;
-import com.nico.common.param.RegisterParam;
 import com.nico.common.utils.JwtUtils;
 import com.nico.common.utils.StringUtils;
 import com.nico.common.web.domain.AjaxResult;
 import com.nico.oauth.domain.Account;
+import com.nico.oauth.param.LoginParam;
+import com.nico.oauth.param.RegisterParam;
 import com.nico.oauth.service.OauthService;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +29,8 @@ public class OauthController {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    private static BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
     @PostMapping("/login")
     public AjaxResult login( @RequestBody @Validated LoginParam loginParam){
 
@@ -41,11 +43,10 @@ public class OauthController {
         }
 
         //3、加密登录密码
-        String encryptionPassword = DigestUtils.md5Hex(loginParam.getPassword());
 
 
         //4、比较密码是否正确
-        if (!encryptionPassword.equals(account.getPassword())) {
+        if (!bCryptPasswordEncoder.matches(loginParam.getPassword(), account.getPassword())) {
             return AjaxResult.error("密码错误");
         }
 
@@ -92,7 +93,8 @@ public class OauthController {
         }
 
         //2、加密原密码
-        String encryptionPassword = DigestUtils.md5Hex(registerParam.getPassword());
+//        String encryptionPassword = DigestUtils.md5Hex(registerParam.getPassword());
+        String encryptionPassword = bCryptPasswordEncoder.encode(registerParam.getPassword());
 
 
         //3、复制对象

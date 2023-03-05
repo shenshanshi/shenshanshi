@@ -25,3 +25,8 @@ spring:
           uri: lb://shenshanshi-oauth
           predicates:
             - Path=/login,/logout,/register
+
+        - id: shenshanshi-forum  #论坛服务
+          uri: lb://shenshanshi-forum
+          predicates:
+            - Path=/forum/**

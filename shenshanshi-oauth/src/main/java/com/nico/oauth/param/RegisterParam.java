@@ -1,4 +1,4 @@
-package com.nico.common.param;
+package com.nico.oauth.param;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

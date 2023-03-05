@@ -93,7 +93,9 @@ public class JwtUtils {
             return 0;
         }
         Claims claims = claimsJws.getBody();
-        return Long.valueOf(claims.get("accountId").toString());
+        Long accountId = Long.valueOf(claims.get("accountId").toString());
+
+        return accountId;
     }
 
     /**

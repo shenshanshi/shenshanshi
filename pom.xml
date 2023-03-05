@@ -18,6 +18,7 @@
         <module>shenshanshi-common</module>
         <module>shenshanshi-account</module>
         <module>shenshanshi-oauth</module>
+        <module>shenshanshi-forum</module>
     </modules>
 
 

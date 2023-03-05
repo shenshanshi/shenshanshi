@@ -1,4 +1,4 @@
-package com.nico.oauth.config;
+package com.nico.common.config;
 
 
 import com.alibaba.fastjson2.JSON;

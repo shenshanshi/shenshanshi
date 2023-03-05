@@ -126,6 +126,8 @@ public class PreAuthorizeAspect
         String key = RedisConstants.TOKENPREFIX + accountId;
 
         Object result = redisTemplate.opsForValue().get(key);
+
+
         if (result == null || !jwtToken.equals(result.toString())){
             throw new NotLoginException("token无效");
         }
