@@ -1,0 +1,77 @@
+package com.nico.account.domain;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * @description role
+ * @author zhengkai.blog.csdn.net
+ * @date 2023-03-10
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Role implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+
+    /**
+     * 角色id
+     */
+    private Long roleId;
+
+    /**
+     * 角色名
+     */
+    private String roleName;
+
+    /**
+     * 角色标志
+     */
+    private String roleKey;
+
+    /**
+     * 状态
+     */
+    private Integer status;
+
+    /**
+     * del_flag
+     */
+    private Integer delFlag;
+
+    /**
+     * create_by
+     */
+    private String createBy;
+
+    /**
+     * create_time
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
+
+    /**
+     * update_by
+     */
+    private String updateBy;
+
+    /**
+     * update_time
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date updateTime;
+
+    /**
+     * remark
+     */
+    private String remark;
+
+
+}
