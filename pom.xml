@@ -19,6 +19,8 @@
         <module>shenshanshi-account</module>
         <module>shenshanshi-oauth</module>
         <module>shenshanshi-forum</module>
+        <module>shenshanshi-periphery</module>
+        <module>shenshanshi-resource</module>
     </modules>
 
 

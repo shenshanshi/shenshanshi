@@ -30,3 +30,15 @@ spring:
           uri: lb://shenshanshi-forum
           predicates:
             - Path=/forum/**
+
+        - id: shenshanshi-periphery  #周边服务
+          uri: lb://shenshanshi-periphery
+          predicates:
+            - Path=/periphery/**
+
+
+
+        - id: shenshanshi-resource  #资源服务
+          uri: lb://shenshanshi-resource
+          predicates:
+            - Path=/resource/**
