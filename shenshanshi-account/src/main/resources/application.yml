@@ -2,6 +2,9 @@ server:
   port: 2521
 
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   application:
     name: shenshanshi-account
   datasource:
